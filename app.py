@@ -1,7 +1,7 @@
 import os
 import phonenumbers
 from phonenumbers import carrier, geocoder
-from opencage.geocoder import OpenCageGeocoder
+from opencage.geocoder import OpenCageGeocode
 from flask import Flask, request, jsonify, Response
 import folium
 
@@ -155,7 +155,7 @@ def track():
 
     if OPENCAGE_KEY and location != "Sconosciuto":
         try:
-            geo = OpenCageGeocoder(OPENCAGE_KEY)
+            geo = OpenCageGeocode(OPENCAGE_KEY)
             results = geo.geocode(location)
             if results:
                 lat = results[0]["geometry"]["lat"]
